@@ -5,6 +5,8 @@ function init()
     loadMemberjsonText();
 }
 
+let fcMembers = [];
+
 function loadMemberjsonText()
 {
     console.log("Loading Member jsonText");
@@ -44,10 +46,12 @@ function loadMemberjsonText()
 
                 let partyMemberTable = "";
                 partyMemberTable += "<td>" + jsonText.Player + "</td><td><div class=\"switch\"><label>Off<input type=\"checkbox\"><span class=\"lever\"></span>On</label></div";
-
+                
+                if (!fcMembers.includes(jsonText.Player))
+                    fcMembers.push(jsonText.Player);
             });
             memberTable.innerHTML = tablejsonText;
-            partyTable.innerHTML = partyTable;
+            partyTable.innerHTML = partyMemberTable;
         }        
     }
 
@@ -56,6 +60,11 @@ function loadMemberjsonText()
 }
 
 let characterRoles = [];
+
+function getPartyMembers()
+{
+    
+}
 
 function checkRoles()
 {
