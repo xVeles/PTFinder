@@ -46,7 +46,7 @@ function loadMemberjsonText()
                 fcMemberText += fcMemberTable;
 
                 let partyMemberTable = "";
-                partyMemberTable += "<td>" + data.Player + "</td><td><div class=\"switch\"><label>Off<input type=\"checkbox\"><span class=\"lever\"></span>On</label></div";
+                partyMemberTable += "<tr><td>" + data.Player + "</td><td><div class=\"switch\"><label>Off<input type=\"checkbox\"><span class=\"lever\"></span>On</label></div></td><tr>";
                 partyMemberText += partyMemberTable
 
                 if (!fcMembers.includes(data.Player))
