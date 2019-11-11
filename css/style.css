@@ -1,0 +1,15 @@
+table thead tr td
+{
+  font-weight: bold;
+  text-align: center;
+}
+
+table tbody tr td
+{
+  text-align: center;
+}
+
+.italic
+{
+  font-style: italic;
+}
