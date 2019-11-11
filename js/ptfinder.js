@@ -45,7 +45,7 @@ function loadMemberData()
         }        
     }
 
-    xhr.open("GET", "memberData.json", true);
+    xhr.open("GET", "memberData.txt", true);
     xhr.send();
 }
 
