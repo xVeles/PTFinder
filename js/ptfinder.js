@@ -51,7 +51,7 @@ function loadMemberjsonText()
         }        
     }
 
-    xhr.open("GET", "js/memberjsonText.txt", true);
+    xhr.open("GET", "js/memberData.txt", true);
     xhr.send();
 }
 
