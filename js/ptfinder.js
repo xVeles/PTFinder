@@ -53,11 +53,7 @@ let characterRoles = [];
 
 function checkRoles()
 {
-
-}
-
-function writeMemberjsonText()
-{
+    
 
 }
 
