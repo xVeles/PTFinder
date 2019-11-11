@@ -28,7 +28,7 @@ function loadMemberjsonText()
                 fcMemberTable += "<td>" + data.Player + "</td>";
                 fcMemberTable += data.PLD != 0 ? "<td>" + data.PLD + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
                 fcMemberTable += data.WAR != 0 ? "<td>" + data.WAR + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.DNK != 0 ? "<td>" + data.DNK + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
+                fcMemberTable += data.DRK != 0 ? "<td>" + data.DRK + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
                 fcMemberTable += data.GNB != 0 ? "<td>" + data.GNB + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
                 fcMemberTable += data.WHM != 0 ? "<td>" + data.WHM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
                 fcMemberTable += data.SCH != 0 ? "<td>" + data.SCH + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
