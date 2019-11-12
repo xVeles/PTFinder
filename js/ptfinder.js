@@ -21,7 +21,6 @@ function loadMemberjsonText()
             const jsonText = JSON.parse(xhr.responseText);
             let fcMemberText = "";
             
-
             jsonText.forEach(data => 
             {
                 let fcMemberTable = "<tr>";
@@ -54,6 +53,8 @@ function loadMemberjsonText()
 
     xhr.open("GET", "js/memberData.txt", true);
     xhr.send();
+
+    displayPartyMaker();
 }
 
 let characterRoles = [];
