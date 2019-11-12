@@ -11,7 +11,7 @@ function loadMemberjsonText()
 {
     console.log("Loading Member jsonText");
     const memberTable = document.getElementById("fc-members");
-    const partyTable = document.getElementById("party-members");
+    
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () =>
     {
@@ -20,7 +20,7 @@ function loadMemberjsonText()
             console.log(xhr.responseText);
             const jsonText = JSON.parse(xhr.responseText);
             let fcMemberText = "";
-            let partyMemberText = "";
+            
 
             jsonText.forEach(data => 
             {
@@ -45,15 +45,10 @@ function loadMemberjsonText()
                 fcMemberTable += data.RDM != 0 ? "<td>" + data.RDM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td></tr>"
                 fcMemberText += fcMemberTable;
 
-                let partyMemberTable = "";
-                partyMemberTable += "<tr><td>" + data.Player + "</td><td><div class=\"switch\"><label>No<input id=\"" + data.Player + " \" type=\"checkbox\"><span class=\"lever\"></span>Yes</label></div></td><tr>";
-                partyMemberText += partyMemberTable
-
                 if (!fcMembers.includes(data.Player))
                     fcMembers.push(data.Player);
             });
             memberTable.innerHTML = fcMemberText;
-            partyTable.innerHTML = partyMemberText;
         }        
     }
 
@@ -62,6 +57,25 @@ function loadMemberjsonText()
 }
 
 let characterRoles = [];
+
+function displayPartyMaker()
+{
+    const partyTable = document.getElementById("party-members");
+
+    let partyForm = "<div class=\"input-field col s12\">";
+
+    for (let i = 0; i < fcMembers.length; i++)
+    {
+        partyForm += "<select id=\"party-member-" + i + "\">";
+        fcMembers.forEach(player =>
+        {
+            partyForm += "<option value=\"" + player + "\""> + player + "</option>";
+        });
+        partyForm += "</select><label>Party Member " + i + "</label>";
+    }
+
+    partyTable.innerHTML = partyForm;
+}
 
 function getPartyMembers()
 {
