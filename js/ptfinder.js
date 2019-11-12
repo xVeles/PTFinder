@@ -17,7 +17,6 @@ function loadMemberjsonText()
     {
         if (xhr.readyState == 4 && xhr.status == 200)
         {
-            console.log(xhr.responseText);
             const jsonText = JSON.parse(xhr.responseText);
             let fcMemberText = "";
             
@@ -50,10 +49,10 @@ function loadMemberjsonText()
             memberTable.innerHTML = fcMemberText;
         }        
     }
-
+    
     xhr.open("GET", "js/memberData.txt", true);
     xhr.send();
-
+    console.log(fcMembers);
     displayPartyMaker();
 }
 
@@ -61,9 +60,10 @@ let characterRoles = [];
 
 function displayPartyMaker()
 {
+    console.log("Making format");
     const partyTable = document.getElementById("party-members");
 
-    let partyForm = "<div class=\"input-field col s12\">";
+    let partyForm = "<div class=\"input-field\">";
 
     for (let i = 0; i < fcMembers.length; i++)
     {
