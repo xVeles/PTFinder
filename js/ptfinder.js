@@ -5,7 +5,7 @@ function init()
     loadMemberjsonText();
 }
 
-let fcMembers = [];
+let fcMembers = ["Veles", "Renalyria", "Acuiasa", "Zeph", "Ema", "Lupie", "Yerisha", "Aereli", "Loria", "Andler", "Smoke"];
 
 function loadMemberjsonText()
 {
@@ -43,8 +43,8 @@ function loadMemberjsonText()
                 fcMemberTable += data.RDM != 0 ? "<td>" + data.RDM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td></tr>"
                 fcMemberText += fcMemberTable;
 
-                if (!fcMembers.includes(data.Player))
-                    fcMembers.push(data.Player);
+                if (!fcMembers.includes(data))
+                    fcMembers.push(data);
             });
             memberTable.innerHTML = fcMemberText;
         }        
@@ -52,35 +52,67 @@ function loadMemberjsonText()
     
     xhr.open("GET", "js/memberData.txt", true);
     xhr.send();
-    console.log(fcMembers);
     displayPartyMaker();
+    
+    
 }
 
-let characterRoles = [];
+let select;
 
 function displayPartyMaker()
 {
     console.log("Making format");
     const partyTable = document.getElementById("party-members");
 
-    let partyForm = "<div class=\"input-field\">";
+    let partyForm = "<h5>Party Members</h5><div class=\"input-field\">";
 
-    for (let i = 0; i < fcMembers.length; i++)
+    for (let i = 0; i < 8; i++)
     {
-        partyForm += "<select id=\"party-member-" + i + "\">";
+        partyForm += "<select id=\"party-member-" + i +"\"><option value=\"default\">Select Player " + i + "</option>";
         fcMembers.forEach(player =>
         {
-            partyForm += "<option value=\"" + player + "\""> + player + "</option>";
+            partyForm += "<option value=\"" + player +"\">" + player + "</option>";
         });
-        partyForm += "</select><label>Party Member " + i + "</label>";
+        partyForm += "</select>";
     }
+    partyForm += "<a id=\"submit-party\" class=\"indigo darken-3 waves-effect waves-light btn center\">Make Party</a><br><span id=\"pterror\"></span>";
 
     partyTable.innerHTML = partyForm;
+
+    
+    let selects = document.querySelectorAll('select');
+    M.FormSelect.init(selects, fcMembers);
+
+    let submit = document.getElementById('submit-party');
+    submit.addEventListener("click", getPartyMembers);
 }
+
+let partyMembers = [];
 
 function getPartyMembers()
 {
+    partyMembers = [];
+    const ptError = document.getElementById("pterror");
 
+    for (let i = 0; i < 8; i++)
+    {
+        const ptMember = document.getElementById("party-member-" + i);
+        partyMembers.push(ptMember.value);
+    }
+
+    if (partyMembers.includes("default"))
+    {
+        ptError.textContent = "Error: One or more players haven't been selected";
+        return;
+    }
+
+    let dups = partyMembers.filter((player, index) => partyMembers.indexOf(player) != index);
+    if (dups.length != 0)
+    {
+        ptError.textContent = "Error: Duplicate Players have been selected";
+        return;
+    }
+    
 }
 
 function checkRoles()

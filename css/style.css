@@ -13,3 +13,8 @@ table tbody tr td
 {
   font-style: italic;
 }
+
+#pterror
+{
+  color: red;
+}
