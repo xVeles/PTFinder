@@ -62,8 +62,6 @@ function loadMemberjsonText()
     
 }
 
-let select;
-
 function displayPartyMaker()
 {
     console.log("Making format");
@@ -107,6 +105,7 @@ function getPartyMembers()
 
     if (partyMembers.includes("default"))
     {
+        M.toast({html: 'Error while making party!'});
         ptError.textContent = "Error: One or more players haven't been selected";
         return;
     }
@@ -114,10 +113,11 @@ function getPartyMembers()
     let dups = partyMembers.filter((player, index) => partyMembers.indexOf(player) != index);
     if (dups.length != 0)
     {
+        M.toast({html: 'Error while making party!'})
         ptError.textContent = "Error: Duplicate Players have been selected";
         return;
     }
-    
+    M.toast({html: 'Successfully made party!'})
 }
 
 function checkRoles()
