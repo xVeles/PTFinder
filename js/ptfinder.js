@@ -5,7 +5,7 @@ function init()
     loadMemberjsonText();
 }
 
-let fcMembers = ["Veles", "Renalyria", "Acuiasa", "Zeph", "Ema", "Lupie", "Yerisha", "Aereli", "Loria", "Andler", "Smoke"];
+let fcMembers = [];
 
 function loadMemberjsonText()
 {
