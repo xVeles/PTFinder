@@ -46,7 +46,7 @@ function loadMemberjsonText()
 
                 if (!fcMembers.includes(data))
                 {
-                    fcMembers.push(data);
+                    fcMembers.push(data.Player);
                     fcData.push(data);
                 }
             });
