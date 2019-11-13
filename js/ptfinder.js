@@ -6,6 +6,7 @@ function init()
 }
 
 let fcMembers = [];
+let fcData = [];
 
 function loadMemberjsonText()
 {
@@ -44,7 +45,10 @@ function loadMemberjsonText()
                 fcMemberText += fcMemberTable;
 
                 if (!fcMembers.includes(data))
+                {
                     fcMembers.push(data);
+                    fcData.push(data);
+                }
             });
             memberTable.innerHTML = fcMemberText;
         }        
@@ -52,7 +56,8 @@ function loadMemberjsonText()
     
     xhr.open("GET", "js/memberData.txt", true);
     xhr.send();
-    displayPartyMaker();
+
+    setTimeout(displayPartyMaker, 300);
     
     
 }
@@ -118,7 +123,6 @@ function getPartyMembers()
 function checkRoles()
 {
     
-
 }
 
 window.onload = init;
