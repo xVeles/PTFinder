@@ -25,23 +25,23 @@ function loadMemberjsonText()
             {
                 let fcMemberTable = "<tr>";
                 fcMemberTable += "<td>" + data.Player + "</td>";
-                fcMemberTable += data.PLD != 0 ? "<td>" + data.PLD + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.WAR != 0 ? "<td>" + data.WAR + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.DRK != 0 ? "<td>" + data.DRK + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.GNB != 0 ? "<td>" + data.GNB + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.WHM != 0 ? "<td>" + data.WHM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.SCH != 0 ? "<td>" + data.SCH + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.AST != 0 ? "<td>" + data.AST + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.MNK != 0 ? "<td>" + data.MNK + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.DRG != 0 ? "<td>" + data.DRG + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.NIN != 0 ? "<td>" + data.NIN + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.SAM != 0 ? "<td>" + data.SAM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.BRD != 0 ? "<td>" + data.BRD + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.MCH != 0 ? "<td>" + data.MCH + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.DNC != 0 ? "<td>" + data.DNC + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.BLM != 0 ? "<td>" + data.BLM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.SMN != 0 ? "<td>" + data.SMN + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td>"
-                fcMemberTable += data.RDM != 0 ? "<td>" + data.RDM + "</td>" : "<td><i class=\"tiny material-icons\">block</i></td></tr>"
+                fcMemberTable += data.PLD != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.WAR != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.DRK != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.GNB != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.WHM != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.SCH != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.AST != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.MNK != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.DRG != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.NIN != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.SAM != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.BRD != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.MCH != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.DNC != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.BLM != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.SMN != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td>"
+                fcMemberTable += data.RDM != "false" ? "<td><i class=\"tiny material-icons\">check</i></td>" : "<td></td></tr>"
                 fcMemberText += fcMemberTable;
 
                 if (!fcMembers.includes(data))
@@ -118,11 +118,30 @@ function getPartyMembers()
         return;
     }
     M.toast({html: 'Successfully made party!'})
+
+    checkRoles();
 }
+
+let finalisedParty = [];
 
 function checkRoles()
 {
-    
+    let selectedMembers = fcData.filter(data => partyMembers.includes(data.Player));
+
+
+}
+
+function tankSelect(playerData)
+{
+    let tankPlayers = playerData.filter(data => data.PLD > 8 || data.WAR > 8 || data.DRK > 8 || data.GNB > 8);
+    let selectedTanks = [];
+    console.log(tankPlayers);
+
+    for (let i = 0; i < tankPlayers.length; i++)
+    {
+        let tank = [tankPlayers[i].Player];
+        tank[1] = chance.weight(["PLD", "WAR", "DRK", "GNB"], [tankPlayers[i].PLD, tankPlayers[i].WAR], tankPlayers[i].DRK, tankPlayers[i].GNB);
+    }
 }
 
 window.onload = init;
