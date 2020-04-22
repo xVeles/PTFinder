@@ -9,6 +9,10 @@ table tbody tr td
   text-align: center;
 }
 
+tr, td {
+  border: 2px solid black;
+}
+
 .italic
 {
   font-style: italic;

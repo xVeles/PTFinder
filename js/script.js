@@ -2,6 +2,7 @@ let bingo = [];
 
 let addButton = document.getElementById("add-criteria");
 let createButton = document.getElementById("create");
+let freeField = document.getElementById("free-space");
 
 let criterias1 = document.getElementById("criterias-1");
 let criterias2 = document.getElementById("criterias-2");
@@ -20,6 +21,11 @@ function init()
   createButton.addEventListener("click", () =>
   {
     createBingo();
+  });
+
+  freeField.addEventListener("input", () =>
+  {
+    validBingo();
   });
 }
 
@@ -60,10 +66,9 @@ function makeList()
 
   for (let i = 0; i < bingo.length; i++)
   {
-    if (i < 13)
+    if (i < 12)
     {
       content1 += "<li class=\"collection-item\">" + (i+1) + " " + bingo[i] +  "<a class=\"black-text\" href=\"#\"><i class=\"material-icons right\" onmousedown=\"remove(" + i + ")\">close</i></a></li>";
-      console.log("1");
     }
     else 
     {
@@ -74,7 +79,25 @@ function makeList()
   criterias1.innerHTML = content1;
   criterias2.innerHTML = content2;
 
-  if (bingo.length == 25)
+  validBingo();
+
+  if (bingo.length == 24)
+  {
+    input.setAttribute("disabled", "");
+    addButton.setAttribute("class", "btn disabled");
+  }
+  else
+  {
+    input.removeAttribute("disabled");
+    addButton.setAttribute("class", "btn");
+  }
+
+  
+}
+
+function validBingo()
+{
+  if (bingo.length == 24 && freeField.value != "")
   {
     addButton.setAttribute("class", "btn disabled");
     createButton.setAttribute("class", "btn red accent-4");
@@ -94,25 +117,32 @@ function shuffle(array) {
 
 function createBingo()
 {
-  let shuffledBingo = bingo;
+  let shuffledBingo = bingo.slice();
   shuffle(shuffledBingo);
-
-  let row = 0;
 
   console.log(bingo);
   console.log(shuffledBingo);
   let content = "<tr>";
 
-
-
-  for (let i = 0; i < shuffledBingo.length; i++)
+  for (let i = 0; i < 25; i++)
   {
     if (i % 5 == 0) content += "</tr><tr>";
 
-    content += "<td>" + shuffledBingo[i] + "</td>";
+    if (i == 12)
+    {
+      content += "<td style=\"border: 3px solid gold;\">" + freeField.value + "</td>";
+    }
+    else if (i == 24)
+    {
+      content += "<td>" + shuffledBingo[12] + "</td>";
+    }
+    else
+    {
+      content += "<td>" + shuffledBingo[i] + "</td>";
+    }
   }
 
-  table.innerHTML = content;
+  table.innerHTML = content + "</tr>";
 }
 
 init();
