@@ -1,6 +1,5 @@
 // Port needs to be the same as the ISS host port
-const _port = 8189;
-const url = "http://localhost:" + _port + "/";
+const url = "http://88.198.65.120:8189/";
 
 let platform, maptypes, map, kioskList = [];
 //Buttons
