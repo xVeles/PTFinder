@@ -1,7 +1,5 @@
-(function($){
-  $(function(){
+$('.carousel').carousel({
+    interval: false,
+    ride: false
+})
 
-
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space

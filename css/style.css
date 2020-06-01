@@ -1,24 +1,182 @@
-table thead tr td
-{
-  font-weight: bold;
-  text-align: center;
+@font-face {
+    font-family: 'SF UI Display Semibold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Semibold'), url('../fonts/sf-ui-display-semibold-58646eddcae92.woff') format('woff');
 }
 
-table tbody tr td
-{
-  text-align: center;
+.logInTransition {
+    animation: transitionIn 1s;
+}
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
 }
 
-tr, td {
-  border: 2px solid black;
+html, body {
+    margin: 0%;
 }
 
-.italic
-{
-  font-style: italic;
+body {
+    background-color: #DCDCDC;
 }
 
-#pterror
+.header {
+    text-align: center;
+    background-color: white;
+    padding-top: .4rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+hr {
+    border:none;
+    height: 20px;
+    height: 50px;
+    margin-top: 0;
+    box-shadow: 0 20px 20px -20px #A9A9A9;
+    margin: -50px auto 10px; 
+}
+
+.main-content {
+    height: 77.55vh;
+    margin-top: .5rem;
+    overflow-x: hidden; 
+}
+
+#footNav {
+    height: 11.84vh;
+}
+
+.nav-item a p
 {
-  color: red;
+    font-weight: bold;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+i.left {
+    float: left;
+    margin-right: 15px;
+}
+  
+i.right {
+    float: right;
+    margin-left: 15px;
+}
+  
+
+i.tiny {
+    font-size: 1rem;
+}
+  
+i.small {
+    font-size: 2rem;
+}
+  
+i.medium {
+    font-size: 4rem;
+}
+  
+i.large {
+    font-size: 6rem;
+}
+
+span.account-header {
+    font-weight: bold;
+}
+
+.shadow-md {
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.overflow-allow
+{
+    overflow: visible !important;
+}
+
+.no-y-overflow
+{
+    overflow-y: hidden;
+}
+
+.shop-nav
+{
+    top: 0;
+    margin-bottom: .85rem;
+}
+
+.shop-nav ul li
+{
+    background-color: white;
+}
+
+#loading img {
+    vertical-align: middle;
+    border-style: none;
+    margin-top: 25%;
+    overflow: hidden;
+    position: absolute;
+}
+
+a.nav-link {
+    cursor: pointer;
+}
+
+.no-pad
+{
+    padding: 0 !important;
+}
+
+.text-tiny
+{
+    font-size: 65%;
+}
+
+.text-small
+{
+    font-size: 70%;
+}
+
+.address-text
+{
+    margin-bottom: 0;
+}
+
+.img-icon
+{
+    padding: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.shop-row
+{
+    padding-top: 1rem;
+}
+
+.signInHeading {
+    font-family:'SF UI Display Semibold';
+    font-weight:normal;
+    font-size: 42em;
+}
+
+.logInForm {
+    border-right: none;
+    border-left: none;
+    border-top: none;
 }
